@@ -1,0 +1,25 @@
+<form action="something form-group">
+        <input class="form-control form-control-lg" name="search" [(ngModel)]="search" type="text"
+                placeholder="Github user name" (click)="settingButton()" (keydown)="settingButton()" required>
+        <button *ngIf="showButton" class="btn btn-secondary mt-2 " type="submit" (click)="find()">Find me</button>
+</form>
+<div *ngIf="loaderRequirement" class="spinner-border text-primary loader" role="status">
+        <span class="sr-only">Loading...</span>
+</div>
+<div *ngIf="profile" class="card text-center mt-{{setMargin}}">
+        <div class="card-header bg-success">
+                <h2>{{profile.name}}</h2>
+        </div>
+        <img [src]="profile.avatar_url">
+        <p class="textaligner" *ngIf="profile.bio">{{profile.bio}}</p>
+        <span class="textaligner" *ngIf="profile.company">
+                Working at:
+                <b class="text-success"> {{profile.company}}</b>
+        </span>
+        <a [href]="profile.html_url" target="_blank" class="btn btn-primary">
+                <h4>View profile</h4>
+        </a>
+</div>
+<div *ngIf="errorMessage" class="container mt-{{setMargin}} error bg-primary">
+        User doesn't exist
+</div>

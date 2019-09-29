@@ -1,0 +1,25 @@
+.textaligner{
+    font-size: 24px;
+}
+span{
+    display: inline-block;
+}
+input{   
+    border: none;
+    border-bottom: .5px black solid;
+    border-radius: 0;
+}
+button{
+    float:right;
+    background-color: #563d7c;
+}
+.error{
+    margin:5px 0;
+    padding: 50px 0;
+    color: white;
+    text-align: center;
+}
+.loader{
+    height: 200px;
+    width: 200px;
+}
