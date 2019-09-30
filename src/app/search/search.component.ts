@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SearchComponent implements OnInit {
   search: string;  // Entered username
-  profile: object; // object storing all the details gathered
+  profile; // object storing all the details gathered
   loaderRequirement: boolean;  // flag to identify the places where loader
   errorMessage: boolean;  // flag to check whether to display error-message or not
   showButton: boolean;  // finding contexts where the button is to be displayed
@@ -37,6 +37,7 @@ export class SearchComponent implements OnInit {
     }
     else // If username is entered for the first time
     {
+    this.profile = null;
     this.httpClient.get(`https://api.github.com/users/` + this.search)
       .subscribe((result) => {
         this.setMargin = 1;
