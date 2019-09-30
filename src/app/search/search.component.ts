@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
     }
     else // If username is entered for the first time
     {
-    this.httpClient.get(`https://api.github.com/users/` + this.search + `?access_token=b3722c2825a4d6957432e11ea6956c50928f119c`)
+    this.httpClient.get(`https://api.github.com/users/` + this.search)
       .subscribe((result) => {
         this.setMargin = 1;
         this.loaderRequirement = false;
@@ -45,17 +45,18 @@ export class SearchComponent implements OnInit {
         localStorage.setItem(this.search, JSON.stringify(this.profile));  // Storing the profile to local storage 
       },
         (error) => {
+          this.setMargin=3;
           delete this.profile;
           this.errorMessage = true;
           this.loaderRequirement = false;
           if (error.status == 404) {
             this.toast.error('Name is incorrect', 'Please check the name entered', {
-              timeOut: 3000
+              timeOut: 4000
             })
           }
           else if (error.status == 403) {
             this.toast.error('Sorry,Cannot find the id', 'Try at a later time', {
-              timeOut: 3000
+              timeOut: 4000
             })
           }
         });
